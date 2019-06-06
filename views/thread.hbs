@@ -12,8 +12,8 @@
             <p>{{{op_message}}}</p>
             <p>{{poster}}</p>
             <p>{{date}}</p>
-            
-            {{#if isOP}}
+
+            {{#if (isAdmin user.type)}}
             <div class="container">
               <div class="row">
                 <div class=".col-sm-1">

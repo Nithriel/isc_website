@@ -82,13 +82,14 @@ app.get("/registration", checkAuthentication_false, (request, response) => {
 
 // Main Page
 app.get('/', async (request, response) => {
-    var topic = await promises.genreList();
-
-    response.render('genre.hbs', {
-        title: 'Home',
-        heading: 'Message Board',
-        topic: topic,
-    });
+    response.redirect('/genre_board/events')
+    // var topic = await promises.genreList();
+    //
+    // response.render('genre.hbs', {
+    //     title: 'Home',
+    //     heading: 'Message Board',
+    //     topic: topic,
+    // });
 });
 
 // Main Page
@@ -133,11 +134,15 @@ app.get('/genre_board/:genre', async (request, response) => {
 
 // Adding new post
 app.get('/:genre/new_post', checkAuthentication, (request, response) => {
-    response.render('new_post.hbs', {
-        title: 'Post',
-        heading: 'Add a post',
-        genre: request.params.genre
-    });
+    if (request.user.type === 'administrator') {
+        response.render('new_post.hbs', {
+            title: 'Post',
+            heading: 'Add a post',
+            genre: request.params.genre
+        });
+    } else {
+        response.redirect('/')
+    }
 });
 
 // Dynamically generated endpoint for threads
@@ -179,6 +184,10 @@ app.get('/thread/:id', async (request, response) => {
             thread: thread
         });
     }
+});
+
+hbs.registerHelper('isAdmin', function(type) {
+    return type === 'administrator';
 });
 
 app.listen(port, () => {

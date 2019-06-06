@@ -32,6 +32,7 @@ function add_post(request, response) {
     var message = request.body.message;
     var username = request.user.username;
     var chosen_genre = request.params.genre;
+    console.log(typeof(request.body.event_date));
 
     var db = utils.getDb();
 
