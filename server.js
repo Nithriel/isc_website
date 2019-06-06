@@ -177,7 +177,7 @@ app.get('/thread/:id', async (request, response) => {
             heading: thread.title,
             op_message: thread.message,
             poster: thread.username,
-            date: thread.date,
+            date: thread.event_date,
             id: thread._id,
             reply: replies,
             isOP: isOP,

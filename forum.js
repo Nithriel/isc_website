@@ -32,7 +32,8 @@ function add_post(request, response) {
     var message = request.body.message;
     var username = request.user.username;
     var chosen_genre = request.params.genre;
-    console.log(typeof(request.body.event_date));
+    var event_date = request.body.event_date;
+    var image_link = request.body.image_link;
 
     var db = utils.getDb();
 
@@ -42,6 +43,8 @@ function add_post(request, response) {
         username: username,
         type: 'thread',
         date: get_date(),
+        event_date: event_date,
+        image_link: image_link,
         thread_id: null,
         genre: chosen_genre
     }, (err, result) => {

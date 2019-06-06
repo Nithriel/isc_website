@@ -23,13 +23,21 @@
         </div>
         <hr>
 
-        <ul class="message_list list-group">
+        <div class="row">
             {{#each message}}
-                <a href="/thread/{{_id}}" class="list-group-item list-group-item-action">{{title}}
-                    <p class="poster">Posted by: {{username}} on {{date}}</p>
-                </a>
+                <div class="card m-1 box" style="width: 18rem; position: relative;">
+                    <img class="card-img-top" style="width: 286px; height: 180px" src="{{image_link}}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{title}}</h5>
+                        <p class="card-text">{{event_date}}</p>
+                        <a href="/thread/{{_id}}" class="btn btn-primary">Details</a>
+                    </div>
+                </div>
+                <!--<a href="/thread/{{_id}}" class="list-group-item list-group-item-action">{{title}}-->
+                    <!--<p class="poster">Posted by: {{username}} on {{date}}</p>-->
+                <!--</a>-->
             {{/each}}
-        </ul>
+        </div>
     </div>
 
     <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
