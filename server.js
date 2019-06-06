@@ -136,8 +136,8 @@ app.get('/genre_board/:genre', async (request, response) => {
 app.get('/:genre/new_post', checkAuthentication, (request, response) => {
     if (request.user.type === 'administrator') {
         response.render('new_post.hbs', {
-            title: 'Post',
-            heading: 'Add a post',
+            title: 'Event',
+            heading: 'Add a event',
             genre: request.params.genre
         });
     } else {
